@@ -1,0 +1,35 @@
+server:
+  port: 8080
+
+spring:
+  datasource:
+    url: jdbc:mysql://localhost:3306/tb?useUnicode=true&characterEncoding=utf-8&serverTimezone=Asia/Shanghai
+    username: root
+    password: 123456
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  
+  servlet:
+    multipart:
+      max-file-size: 2MB
+      max-request-size: 2MB
+
+mybatis-plus:
+  mapper-locations: classpath:mapper/*.xml
+  type-aliases-package: com.example.bottle.entity
+  configuration:
+    map-underscore-to-camel-case: true
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+  global-config:
+    db-config:
+      logic-delete-field: deleted
+      logic-delete-value: 1
+      logic-not-delete-value: 0
+
+jwt:
+  # 使用更长的密钥（512位 = 64字节）
+  secret: mQP9X7V4Cx2JbFkNdW5HgU8ZvA3sTYE6RmLjKpBnMwDhN2SGq4t5cVf9kTrWxZy1mQP9X7V4Cx2JbFkNdW5HgU8ZvA3sTYE6RmLjKpBn
+  expiration: 86400000 # 24小时过期
+
+file:
+  upload-dir: ./uploads
+  access-path: /uploads 
